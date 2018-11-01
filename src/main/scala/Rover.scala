@@ -136,9 +136,15 @@ case class Rover(width: Int, height: Int, position: Position, facing: Direction,
   }
 
   //removing position from the obstacle list
-
   def removeObstacle(pos: Position): Rover = {
     this.copy(obstacles = obstacles.filter(_ != pos))
+  }
+
+  //returns an option containing a position in a given direction if position isn't blocked
+  def getDirection(pos: Position): Option[Position] = {
+    if(obstacles.contains(position+pos)) None
+    else Some((position+pos))
+
   }
 }
 

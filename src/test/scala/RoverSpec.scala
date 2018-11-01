@@ -207,5 +207,19 @@ class RoverSpec extends FunSpec with Matchers {
 
   }
 
+  describe("finding the position to the north of a given position") {
+    it("should return an option containing the position to the north") {
+      val r = Rover.apply()
+      r.getDirection(Position(0,1)) shouldEqual Some(Position(0,1))
+  }
+
+    it("should return none because the position to the north is blocked")
+    {
+      val r = Rover.apply()
+      val r1 = r.addObstacle(Position(0, 1))
+      r1.getDirection(Position(0,1)) shouldEqual None
+  }
+  }
+
 }
 
